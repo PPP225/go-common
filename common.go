@@ -15,6 +15,13 @@ func Check(e error) {
 	}
 }
 
+// Log writes to stdout if shoudLog flag is true
+func Log(shoudLog bool, format string, a ...interface{}) {
+	if shoudLog {
+		fmt.Printf(format, a...)
+	}
+}
+
 // ErrorTraced mimics panic() output.
 //
 // Usage: return ErrorTraced(err, inputAgrs...)
