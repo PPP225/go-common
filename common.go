@@ -1,6 +1,7 @@
 package common
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"regexp"
@@ -53,3 +54,14 @@ func CheckEmail(email string) (ok bool) {
 func ElapsedMs(start time.Time) float64 {
 	return (float64)(time.Now().Sub(start).Nanoseconds()) / 1e6
 }
+
+// PrettyPrint prints objects prettier
+func PrettyPrint(v interface{}) (err error) {
+	b, err := json.MarshalIndent(v, "", "  ")
+	if err == nil {
+		fmt.Println(string(b))
+	}
+	return
+}
+
+// TODO: add retry function https://stackoverflow.com/questions/47606761/repeat-code-if-an-error-occured
